@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationASPNetMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,14 @@ namespace EducationASPNetMVC.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult GetByCategory(int PhanLoaiSanPhamID)
+        {
+            QuanLyBanQuanAoEntities _dbContext = new QuanLyBanQuanAoEntities();
+            var products = _dbContext.Sanphams
+                .Where(p => p.PhanLoaiSanPhamID == PhanLoaiSanPhamID).ToList();
+
+            return PartialView("_ProductList", products); // Trả về PartialView
         }
 
         public ActionResult About()

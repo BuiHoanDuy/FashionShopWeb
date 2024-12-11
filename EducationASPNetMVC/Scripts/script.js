@@ -1,6 +1,7 @@
-(function($) {
+﻿(function($) {
 
   "use strict";
+
 
   var searchPopup = function() {
       // open search box
@@ -227,4 +228,21 @@
 
   });
 
+
 })(jQuery);
+
+$(document).ready(function () {
+    $(".tabs .tab").click(function () {
+        // Xóa lớp active khỏi tất cả các tab
+        $(".tabs .tab").removeClass("active");
+        // Thêm lớp active vào tab hiện tại
+        $(this).addClass("active");
+
+        // Ẩn tất cả các phần tử tab-content
+        $(".tab-content > div").removeClass("active");
+
+        // Hiển thị nội dung của tab hiện tại
+        var target = $(this).data("tab-target");
+        $(target).addClass("active");
+    });
+});
